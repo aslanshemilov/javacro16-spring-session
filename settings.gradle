@@ -1,3 +1,4 @@
 rootProject.name = 'javacro16-spring-session'
 
 include 'basic'
+include 'session-strategy'
