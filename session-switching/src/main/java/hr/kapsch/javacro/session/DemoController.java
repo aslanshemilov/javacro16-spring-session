@@ -29,6 +29,7 @@ public class DemoController {
 		Map<String, String> sessionsIds = sessionManager.getSessionIds(request);
 		String newSessionAlias = sessionManager.getNewSessionAlias(request);
 
+		Session currentSession = null;
 		List<Session> sessions = new ArrayList<>(sessionsIds.size());
 
 		for (Map.Entry<String, String> entry : sessionsIds.entrySet()) {
@@ -42,7 +43,7 @@ public class DemoController {
 			}
 
 			if (alias.equals(currentSessionAlias)) {
-				sessions.add(new Session(alias, session));
+				currentSession = new Session(alias, session);
 			}
 			else {
 				String link = sessionManager.encodeURL(".", alias);
@@ -50,24 +51,25 @@ public class DemoController {
 			}
 		}
 
-		model.addAttribute("addSessionLink", sessionManager.encodeURL("add", newSessionAlias));
+		model.addAttribute("addSessionLink", sessionManager.encodeURL("new", newSessionAlias));
+		model.addAttribute("currentSession", currentSession);
 		model.addAttribute("sessions", sessions);
 
 		return "index";
 	}
 
-	@GetMapping("/add")
+	@GetMapping("/new")
 	String addSession(HttpSession session) {
 		return "redirect:/";
 	}
 
 	static class Session {
 
-		String alias;
-		String link;
-		String id;
-		Date creationTime;
-		Date lastAccessedTime;
+		private String alias;
+		private String link;
+		private String id;
+		private Date creationTime;
+		private Date lastAccessedTime;
 
 		Session(String alias, String link, ExpiringSession session) {
 			this.alias = alias;
@@ -99,10 +101,6 @@ public class DemoController {
 
 		public Date getLastAccessedTime() {
 			return this.lastAccessedTime;
-		}
-
-		public boolean isCurrent() {
-			return this.link == null;
 		}
 
 	}
