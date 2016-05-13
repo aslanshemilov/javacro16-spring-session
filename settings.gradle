@@ -1,5 +1,6 @@
 rootProject.name = 'javacro16-spring-session'
 
 include 'basic'
+include 'basic-jdbc'
 include 'session-strategy'
 include 'session-switching'
