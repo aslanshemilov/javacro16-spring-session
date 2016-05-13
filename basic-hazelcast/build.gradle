@@ -1,0 +1,4 @@
+dependencies {
+	compile 'org.springframework.session:spring-session'
+	compile 'com.hazelcast:hazelcast-spring'
+}
