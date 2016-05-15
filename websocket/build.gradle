@@ -1,0 +1,11 @@
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-websocket'
+	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compile 'org.springframework.session:spring-session-data-redis'
+	compile 'org.thymeleaf.extras:thymeleaf-extras-conditionalcomments'
+	compile 'org.webjars:bootstrap:3.3.6'
+	compile 'org.webjars:html5shiv:3.7.3'
+	compile 'org.webjars:respond:1.4.2'
+	compile 'org.webjars:sockjs-client:1.0.2'
+	compile 'org.webjars:stomp-websocket:2.3.3'
+}
