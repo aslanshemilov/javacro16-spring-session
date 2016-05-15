@@ -31,7 +31,7 @@
 				<th style="width: 25%">Last accessed time</th>
 			</tr>
 			<tr>
-				<td th:text="${currentSession.alias}">Session alias</td>
+				<td><a href="#" th:href="${currentSession.link}" th:text="${currentSession.alias}">Session alias</a></td>
 				<td th:text="${currentSession.id}">Session id</td>
 				<td th:text="${currentSession.creationTime}">Creation time</td>
 				<td th:text="${currentSession.lastAccessedTime}">Last accessed time</td>

@@ -42,12 +42,14 @@ public class DemoController {
 				continue;
 			}
 
+			String link = sessionManager.encodeURL(".", alias);
+			Session sessionInfo = new Session(alias, link, session);
+
 			if (alias.equals(currentSessionAlias)) {
-				currentSession = new Session(alias, session);
+				currentSession = sessionInfo;
 			}
 			else {
-				String link = sessionManager.encodeURL(".", alias);
-				sessions.add(new Session(alias, link, session));
+				sessions.add(sessionInfo);
 			}
 		}
 
@@ -77,10 +79,6 @@ public class DemoController {
 			this.id = session.getId();
 			this.creationTime = new Date(session.getCreationTime());
 			this.lastAccessedTime = new Date(session.getLastAccessedTime());
-		}
-
-		Session(String alias, ExpiringSession session) {
-			this(alias, null, session);
 		}
 
 		public String getAlias() {
