@@ -21,36 +21,46 @@
 <body>
 	<div class="container">
 		<h3>Session Switching</h3>
-		<p><a class="btn btn-default" href="#" th:href="${addSessionLink}" role="button">New session</a></p>
+		<p>
+			<a class="btn btn-default" href="#" th:href="${addSessionLink}" role="button">New session</a>
+		</p>
 		<table class="table" th:if="${currentSession}">
 			<caption>Current Session</caption>
-			<tr>
-				<th style="width: 25%">Session alias</th>
-				<th style="width: 25%">Session id</th>
-				<th style="width: 25%">Creation time</th>
-				<th style="width: 25%">Last accessed time</th>
-			</tr>
-			<tr>
-				<td><a href="#" th:href="${currentSession.link}" th:text="${currentSession.alias}">Session alias</a></td>
-				<td th:text="${currentSession.id}">Session id</td>
-				<td th:text="${currentSession.creationTime}">Creation time</td>
-				<td th:text="${currentSession.lastAccessedTime}">Last accessed time</td>
-			</tr>
+			<thead>
+				<tr>
+					<th style="width: 25%">Session alias</th>
+					<th style="width: 25%">Session id</th>
+					<th style="width: 25%">Creation time</th>
+					<th style="width: 25%">Last accessed time</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="#" th:href="${currentSession.link}" th:text="${currentSession.alias}">Session alias</a></td>
+					<td th:text="${currentSession.id}">Session id</td>
+					<td th:text="${currentSession.creationTime}">Creation time</td>
+					<td th:text="${currentSession.lastAccessedTime}">Last accessed time</td>
+				</tr>
+			</tbody>
 		</table>
 		<table class="table" th:unless="${sessions?.empty}">
 			<caption>Other Sessions</caption>
-			<tr>
-				<th style="width: 25%">Session alias</th>
-				<th style="width: 25%">Session id</th>
-				<th style="width: 25%">Creation time</th>
-				<th style="width: 25%">Last accessed time</th>
-			</tr>
-			<tr th:each="session : ${sessions}">
-				<td><a href="#" th:href="${session.link}" th:text="${session.alias}">Session alias</a></td>
-				<td th:text="${session.id}">Session id</td>
-				<td th:text="${session.creationTime}">Creation time</td>
-				<td th:text="${session.lastAccessedTime}">Last accessed time</td>
-			</tr>
+			<thead>
+				<tr>
+					<th style="width: 25%">Session alias</th>
+					<th style="width: 25%">Session id</th>
+					<th style="width: 25%">Creation time</th>
+					<th style="width: 25%">Last accessed time</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="session : ${sessions}">
+					<td><a href="#" th:href="${session.link}" th:text="${session.alias}">Session alias</a></td>
+					<td th:text="${session.id}">Session id</td>
+					<td th:text="${session.creationTime}">Creation time</td>
+					<td th:text="${session.lastAccessedTime}">Last accessed time</td>
+				</tr>
+			</tbody>
 		</table>
 	</div>
 
