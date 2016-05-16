@@ -1,4 +1,4 @@
-package hr.kapsch.javacro.session;
+package hr.kapsch.javacro;
 
 import com.hazelcast.config.Config;
 import org.springframework.boot.SpringApplication;

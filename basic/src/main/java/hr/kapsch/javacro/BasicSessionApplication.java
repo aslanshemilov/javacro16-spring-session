@@ -1,4 +1,4 @@
-package hr.kapsch.javacro.session;
+package hr.kapsch.javacro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 @SpringBootApplication
 @EnableRedisHttpSession
-public class SessionSwitchingApplication {
+public class BasicSessionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SessionSwitchingApplication.class, args);
+		SpringApplication.run(BasicSessionApplication.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-package hr.kapsch.javacro.session;
+package hr.kapsch.javacro;
 
 import java.util.Date;
 

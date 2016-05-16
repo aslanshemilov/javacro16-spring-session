@@ -1,16 +1,15 @@
-package hr.kapsch.javacro.session;
+package hr.kapsch.javacro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 
 @SpringBootApplication
-@EnableJdbcHttpSession
-public class BasicJdbcSessionApplication {
+@EnableRedisHttpSession
+public class SessionSwitchingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BasicJdbcSessionApplication.class, args);
+		SpringApplication.run(SessionSwitchingApplication.class, args);
 	}
 
 }
