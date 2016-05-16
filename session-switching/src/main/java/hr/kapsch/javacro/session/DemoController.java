@@ -24,12 +24,19 @@ public class DemoController {
 				.getAttribute(HttpSessionManager.class.getName());
 		SessionRepository<ExpiringSession> sessionRepository = (SessionRepository<ExpiringSession>) request
 				.getAttribute(SessionRepository.class.getName());
+		HttpSession httpSession = request.getSession(false);
 
 		String currentSessionAlias = sessionManager.getCurrentSessionAlias(request);
 		Map<String, String> sessionsIds = sessionManager.getSessionIds(request);
 		String newSessionAlias = sessionManager.getNewSessionAlias(request);
 
 		Session currentSession = null;
+
+		if (httpSession != null) {
+			String link = sessionManager.encodeURL(".", currentSessionAlias);
+			currentSession = new Session(currentSessionAlias, link, request.getSession());
+		}
+
 		List<Session> sessions = new ArrayList<>(sessionsIds.size());
 
 		for (Map.Entry<String, String> entry : sessionsIds.entrySet()) {
@@ -42,14 +49,9 @@ public class DemoController {
 				continue;
 			}
 
-			String link = sessionManager.encodeURL(".", alias);
-			Session sessionInfo = new Session(alias, link, session);
-
-			if (alias.equals(currentSessionAlias)) {
-				currentSession = sessionInfo;
-			}
-			else {
-				sessions.add(sessionInfo);
+			if (!alias.equals(currentSessionAlias)) {
+				String link = sessionManager.encodeURL(".", alias);
+				sessions.add(new Session(alias, link, session));
 			}
 		}
 
@@ -72,6 +74,14 @@ public class DemoController {
 		private String id;
 		private Date creationTime;
 		private Date lastAccessedTime;
+
+		Session(String alias, String link, HttpSession session) {
+			this.alias = alias;
+			this.link = link;
+			this.id = session.getId();
+			this.creationTime = new Date(session.getCreationTime());
+			this.lastAccessedTime = new Date(session.getLastAccessedTime());
+		}
 
 		Session(String alias, String link, ExpiringSession session) {
 			this.alias = alias;
