@@ -1,6 +1,6 @@
 ## JavaCRO '16 - Managing user's session with Spring Session
 
-This repo contains demo applications to accompany [Managing user's session with Spring Session](http://2016.javacro.hr/eng/Program/Managing-user-s-session-with-Spring-Session) talk at JavaCRO '16.
+This repo contains demo applications to accompany [Managing user's session with Spring Session](http://2016.javacro.hr/eng/Program/Managing-user-s-session-with-Spring-Session) talk at JavaCRO '16. Slides are available [here](https://speakerdeck.com/vpavic/managing-users-session-with-spring-session).
 
 Demos are based on Gradle and Spring Boot.
 
